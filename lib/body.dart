@@ -109,10 +109,27 @@ class _BodyState extends State<Body> {
               Text(
                 output,
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green,
+                  fontSize: 25,
+                  color: Colors.green.shade800,
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              // ignore: deprecated_member_use
+              RaisedButton(
+                  padding: EdgeInsetsDirectional.all(10),
+                  child: Text(
+                    'Without Other charges',
+                    style:
+                        TextStyle(fontSize: 15, color: Colors.purple.shade900),
+                  ),
+                  onPressed: () {
+                    var oc = int.parse(output) - 4000;
+                    setState(() {
+                      output = oc.toString();
+                    });
+                  })
             ],
           ),
         ],
