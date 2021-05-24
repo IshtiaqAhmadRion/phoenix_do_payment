@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phoenix_do_payment/detaintion.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -132,8 +133,13 @@ class _BodyState extends State<Body> {
                   })
             ],
           ),
+          Container(
+            child: Detaintion(),
+          )
         ],
       ),
+    
     );
+   
   }
 }
