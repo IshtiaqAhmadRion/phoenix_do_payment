@@ -7,42 +7,45 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  TextEditingController sizeController = TextEditingController();
+  TextEditingController sizeController20 = TextEditingController();
+  TextEditingController sizeController40 = TextEditingController();
+
   TextEditingController quantityController = TextEditingController();
 
 // ignore: unused_field
   String output = '';
-  var size;
+  var size20;
+  var size40;
   var quantity;
   var total;
   var doc, ser, cln, thc, cmc, others;
 
   // ignore: non_constant_identifier_names
   void MultiplyQuantity() {
-    size = int.parse(sizeController.text);
+    size20 = int.parse(sizeController20.text);
     quantity = int.parse(quantityController.text);
-    if (size == 20) {
+
+    if (size20 == 20) {
       doc = 3000;
       ser = 300;
       cln = 300;
       thc = 557;
       cmc = 1539;
       others = 4000;
-      total = (doc + ser + cln + thc + cmc + others) * quantity;
-    } else {
-      doc = 3000;
-      ser = 600;
-      cln = 500;
-      thc = 1253;
-      cmc = 2052;
-      others = 4000;
-      total = (doc + ser + cln + thc + cmc + others) * quantity;
-    }
+      total = (ser + cln + thc + cmc + others) * quantity;
+      total = total + doc;
 
-    //total = (doc+ser+cln+thc+cmc+others);
-    setState(() {
-      output = total.toString();
-    });
+      //total = (doc+ser+cln+thc+cmc+others);
+      setState(() {
+        
+        output = total.toString();
+      });
+    } else {
+      total = 0;
+      setState(() {
+        output = 'Please Enter Valid Container Number';
+      });
+    }
   }
 
   @override
@@ -54,9 +57,26 @@ class _BodyState extends State<Body> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextField(
-              controller: sizeController,
+              controller: sizeController20,
               decoration: InputDecoration(
-                hintText: 'Container type 20 or 40',
+                hintText: 'Container type 20',
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).primaryColor,
+                      width: 3,
+                    )),
+              ),
+            ),
+          ),
+
+          //for 40' input textfield
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: TextField(
+              controller: sizeController40,
+              decoration: InputDecoration(
+                hintText: 'Please Enter Container type 40',
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(
@@ -91,6 +111,7 @@ class _BodyState extends State<Body> {
               color: Color(0xff2D2D2D),
               textColor: Color(0xff0085CA),
               onPressed: () {
+                
                 MultiplyQuantity();
               }),
           SizedBox(
@@ -100,13 +121,14 @@ class _BodyState extends State<Body> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                'Total amount for $quantity x $size:',
+                'Total amount for $quantity x $size20:',
                 style: TextStyle(
                   fontSize: 20,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
               Text(
                 output,
                 style: TextStyle(
@@ -138,8 +160,6 @@ class _BodyState extends State<Body> {
           )
         ],
       ),
-    
     );
-   
   }
 }
