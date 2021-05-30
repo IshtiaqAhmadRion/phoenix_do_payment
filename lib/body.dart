@@ -54,9 +54,14 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.all(30),
       child: Column(
         children: [
+          //for 20' input textfield
+
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextField(
+              keyboardType: TextInputType.number,
+              autofocus: true,
+              maxLength: 2,
               controller: sizeController20,
               decoration: InputDecoration(
                 hintText: 'Container type 20',
