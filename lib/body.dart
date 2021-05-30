@@ -37,7 +37,6 @@ class _BodyState extends State<Body> {
 
       //total = (doc+ser+cln+thc+cmc+others);
       setState(() {
-        
         output = total.toString();
       });
     } else {
@@ -79,6 +78,9 @@ class _BodyState extends State<Body> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextField(
+              keyboardType: TextInputType.number,
+              autofocus: true,
+              maxLength: 2,
               controller: sizeController40,
               decoration: InputDecoration(
                 hintText: 'Please Enter Container type 40',
@@ -94,6 +96,7 @@ class _BodyState extends State<Body> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextField(
+              
               controller: quantityController,
               decoration: InputDecoration(
                 hintText: 'Qantity',
@@ -108,6 +111,8 @@ class _BodyState extends State<Body> {
           ),
           // ignore: deprecated_member_use
           RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
               child: Text(
                 "Submit",
@@ -116,7 +121,6 @@ class _BodyState extends State<Body> {
               color: Color(0xff2D2D2D),
               textColor: Color(0xff0085CA),
               onPressed: () {
-                
                 MultiplyQuantity();
               }),
           SizedBox(
