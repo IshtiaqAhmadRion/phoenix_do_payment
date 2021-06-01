@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phoenix_do_payment/body.dart';
+import 'package:phoenix_do_payment/containerDetails.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +30,7 @@ class _TextFieldsState extends State<TextFields> {
           "DO Collection Cost"
         ),
       ),
-      body: Body(),
+      body: ContainerDetails(),
     );
   }
 }

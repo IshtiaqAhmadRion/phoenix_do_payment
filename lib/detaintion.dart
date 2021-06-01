@@ -6,11 +6,21 @@ class Detaintion extends StatefulWidget {
 }
 
 class _DetaintionState extends State<Detaintion> {
+  String type = 'Type';
+  List size = ["20 GP", "40 HQ"];
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Detaintion Charges"),
+      color: Colors.blue,
+      margin: EdgeInsets.all(10),
+      height: 50,
       
+      child: Column(
+       
+        children: [
+          Text("Detaintion Charges"),
+        ],
+      ),
     );
   }
 }
