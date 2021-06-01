@@ -16,7 +16,6 @@ class _ContainerDetailsState extends State<ContainerDetails> {
         //1st Row
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-         
           children: [
             //Row Padding
             Padding(
@@ -24,10 +23,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
               child: Container(
                 decoration: buildBoxDecoration(),
                 padding: EdgeInsets.only(left: 15, right: 15),
-                
                 child: DropdownButton(
-                
-                  
                   hint: Text(
                     "Container Type",
                   ),
@@ -35,7 +31,6 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                   onChanged: (newValue) {
                     setState(() {
                       type = newValue;
-                      
                     });
                   },
                   items: size.map((sizeItem) {
@@ -48,20 +43,55 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                     );
                   }).toList(),
                 ),
+          
               ),
+              
             ),
+          //Quantity in first row
+          Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                decoration: buildBoxDecoration(),
+                padding: EdgeInsets.only(left: 15, right: 15),
+                child: DropdownButton(
+                  hint: Text(
+                    "Quantity",
+                  ),
+                  value: type,
+                  onChanged: (newValue) {
+                    setState(() {
+                      type = newValue;
+                    });
+                  },
+                  items: size.map((sizeItem) {
+                    return DropdownMenuItem(
+                      value: sizeItem,
+                      child: Text(
+                        sizeItem,
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  }).toList(),
+                ),
+          
+              ),
+              
+            ),
+          
+            
           ],
         ),
       ],
     );
   }
+
 //Extared Method
   BoxDecoration buildBoxDecoration() {
     return BoxDecoration(
-                border: Border.all(
-                    color: Colors.purple,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                  );
+      border: Border.all(
+        color: Colors.purple,
+      ),
+      borderRadius: BorderRadius.circular(10),
+    );
   }
 }
