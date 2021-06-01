@@ -22,12 +22,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
-                // decoration: BoxDecoration(
-                //   border: Border.all(
-                //       color: Colors.purple,
-                //     ),
-                //     borderRadius: BorderRadius.circular(15),
-                //     ),
+                decoration: buildBoxDecoration(),
                 padding: EdgeInsets.only(left: 15, right: 15),
                 
                 child: DropdownButton(
@@ -59,5 +54,14 @@ class _ContainerDetailsState extends State<ContainerDetails> {
         ),
       ],
     );
+  }
+//Extared Method
+  BoxDecoration buildBoxDecoration() {
+    return BoxDecoration(
+                border: Border.all(
+                    color: Colors.purple,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                  );
   }
 }
