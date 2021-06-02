@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phoenix_do_payment/quantity.dart';
 
 class ContainerDetails extends StatefulWidget {
   @override
@@ -11,77 +12,55 @@ class _ContainerDetailsState extends State<ContainerDetails> {
   @override
   Widget build(BuildContext context) {
     //Total Column
-    return Column(
-      children: [
-        //1st Row
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            //Row Padding
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                decoration: buildBoxDecoration(),
-                padding: EdgeInsets.only(left: 15, right: 15),
-                child: DropdownButton(
-                  hint: Text(
-                    "Container Type",
+    return Center(
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        // mainAxisSize: MainAxisSize.max,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+
+        children: [
+          //1st Row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              //Row Padding
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: buildBoxDecoration(),
+                  padding: EdgeInsets.only(left: 15, right: 15),
+                  child: DropdownButton(
+                    hint: Text(
+                      "Container Type",
+                    ),
+                    value: type,
+                    onChanged: (newValue) {
+                      setState(() {
+                        type = newValue;
+                      });
+                    },
+                    items: size.map((sizeItem) {
+                      return DropdownMenuItem(
+                        value: sizeItem,
+                        child: Text(
+                          sizeItem,
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }).toList(),
                   ),
-                  value: type,
-                  onChanged: (newValue) {
-                    setState(() {
-                      type = newValue;
-                    });
-                  },
-                  items: size.map((sizeItem) {
-                    return DropdownMenuItem(
-                      value: sizeItem,
-                      child: Text(
-                        sizeItem,
-                        textAlign: TextAlign.center,
-                      ),
-                    );
-                  }).toList(),
                 ),
-          
               ),
-              
-            ),
-          //Quantity in first row
-          Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                decoration: buildBoxDecoration(),
-                padding: EdgeInsets.only(left: 15, right: 15),
-                child: DropdownButton(
-                  hint: Text(
-                    "Quantity",
-                  ),
-                  value: type,
-                  onChanged: (newValue) {
-                    setState(() {
-                      type = newValue;
-                    });
-                  },
-                  items: size.map((sizeItem) {
-                    return DropdownMenuItem(
-                      value: sizeItem,
-                      child: Text(
-                        sizeItem,
-                        textAlign: TextAlign.center,
-                      ),
-                    );
-                  }).toList(),
-                ),
+              //Quantity in first row
+            ],
+          ),
+          Container(
+            child: QuantityTextFromField(),
+          ),
+          // ignore: deprecated_member_use
           
-              ),
-              
-            ),
-          
-            
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 
