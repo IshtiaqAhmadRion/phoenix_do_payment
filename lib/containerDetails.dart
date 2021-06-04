@@ -94,8 +94,8 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                       "Submit",
                       style: (TextStyle(fontSize: 20.00)),
                     ),
-                    color: Color(0xff2D2D2D),
-                    textColor: Color(0xff0085CA),
+                    color: Colors.green[600],
+                    textColor: Colors.black,
                     onPressed: () {
                       quantityKey.currentState.validate();
                     }),
