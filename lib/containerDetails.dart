@@ -7,12 +7,11 @@ class ContainerDetails extends StatefulWidget {
 }
 
 class _ContainerDetailsState extends State<ContainerDetails> {
-
   TextEditingController quantityController = TextEditingController();
 
   String type;
   int c = 0;
-  var  quantity ;
+  var quantity;
 
   var doc, ser, cln, thc, cmc, others, total;
   List size = ["20 GP", "40 HQ"];
@@ -48,6 +47,8 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                         // ignore: unrelated_type_equality_checks
                         if (type == '20 GP') {
                           c = 1;
+                        } else if (type == '40 HQ') {
+                          c = 2;
                         }
                       });
                     },
@@ -108,30 +109,18 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                     textColor: Colors.black,
                     onPressed: () {
                       quantityKey.currentState.validate();
-                      quantity =  int.parse(quantityController.text);
-                      if (c == 1) {
-                        doc = 3000;
-                        ser = 300;
-                        cln = 300;
-                        thc = 557;
-                        cmc = 1539;
-                        others = 4000;
-                        total = (ser + cln + thc + cmc + others) * quantity;
-                        total = total + doc;
-                      }
+                      quantity = int.parse(quantityController.text);
+                      dropdownSelecoton();
                     }),
-
-                    
               ),
               Text(
-                'Total amount for $quantity x $type:',
+                'Total amount for $quantity x $type :',
                 style: TextStyle(
                   fontSize: 20,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
             ],
           ),
         ],
@@ -139,7 +128,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
     );
   }
 
-//Extarct Method
+  //Extarct Method
   BoxDecoration buildBoxDecoration() {
     return BoxDecoration(
       border: Border.all(
@@ -147,5 +136,26 @@ class _ContainerDetailsState extends State<ContainerDetails> {
       ),
       borderRadius: BorderRadius.circular(10),
     );
+  }
+
+  void dropdownSelecoton() {
+    doc = 3000;
+    others = 4000;
+    if (c == 1) {
+      ser = 300;
+      cln = 300;
+      thc = 557;
+      cmc = 1539;
+      total = (ser + cln + thc + cmc + others) * quantity;
+      total = total + doc;
+    }
+    if (c == 2) {
+      ser = 500;
+      cln = 600;
+      thc = 2052;
+      cmc = 1157;
+      total = (ser + cln + thc + cmc + others) * quantity;
+      total = total + doc;
+    }
   }
 }
