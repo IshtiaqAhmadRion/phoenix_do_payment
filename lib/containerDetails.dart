@@ -7,9 +7,8 @@ class ContainerDetails extends StatefulWidget {
 }
 
 class _ContainerDetailsState extends State<ContainerDetails> {
-  TextEditingController quantityController = TextEditingController();
+  String type, output;
 
-  String type;
   int c = 0;
   var quantity;
 
@@ -71,13 +70,16 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                 child: Form(
                   key: quantityKey,
                   child: TextFormField(
-                    controller: quantityController,
+                    keyboardType: TextInputType.numberWithOptions(),
                     validator: (value) {
-                      if (value.length < 1) {
+                      if (value == null || value.isEmpty) {
                         return 'Please Enter Quantity';
                       } else {
                         return null;
                       }
+                    },
+                    onChanged: (text) {
+                      quantity =int.parse(text);
                     },
                     decoration: InputDecoration(
                       hintText: 'Quantity',
@@ -109,12 +111,11 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                     textColor: Colors.black,
                     onPressed: () {
                       quantityKey.currentState.validate();
-                      quantity = int.parse(quantityController.text);
                       dropdownSelecoton();
                     }),
               ),
               Text(
-                'Total amount for $quantity x $type :',
+                'Total amount for $quantity x $type : $output',
                 style: TextStyle(
                   fontSize: 20,
                   fontStyle: FontStyle.italic,
@@ -148,6 +149,9 @@ class _ContainerDetailsState extends State<ContainerDetails> {
       cmc = 1539;
       total = (ser + cln + thc + cmc + others) * quantity;
       total = total + doc;
+      setState(() {
+        output = total.toString();
+      });
     }
     if (c == 2) {
       ser = 500;
@@ -156,6 +160,10 @@ class _ContainerDetailsState extends State<ContainerDetails> {
       cmc = 1157;
       total = (ser + cln + thc + cmc + others) * quantity;
       total = total + doc;
+
+      setState(() {
+        output = total.toString();
+      });
     }
   }
 }
