@@ -31,7 +31,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Container(
-                  width: screenWidth / 7,
+                  width: screenWidth / 6,
                   decoration: buildBoxDecoration(),
                   padding: EdgeInsets.only(left: 10, right: 15),
                   child: DropdownButton(
@@ -65,7 +65,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
               ),
               //Quantity
               Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
+               // padding: EdgeInsets.only(left: 10, right: 10),
                 width: screenWidth / 7,
                 child: Form(
                   key: quantityKey,
@@ -96,7 +96,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
               ),
               // ignore: deprecated_member_use
               Container(
-                width: screenWidth / 7,
+                width: screenWidth /7,
                 // ignore: deprecated_member_use
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
@@ -115,6 +115,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                     }),
               ),
               Text(
+                
                 'Total amount for $quantity x $type : $output',
                 style: TextStyle(
                   fontSize: 20,
