@@ -65,21 +65,22 @@ class _ContainerDetailsState extends State<ContainerDetails> {
               ),
               //Quantity
               Container(
-               // padding: EdgeInsets.only(left: 10, right: 10),
+                // padding: EdgeInsets.only(left: 10, right: 10),
                 width: screenWidth / 7,
                 child: Form(
                   key: quantityKey,
                   child: TextFormField(
                     keyboardType: TextInputType.numberWithOptions(),
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      
+                      if (value == null || value.isEmpty || int.parse(value)  == 0) {
                         return 'Please Enter Quantity';
                       } else {
                         return null;
                       }
                     },
                     onChanged: (text) {
-                      quantity =int.parse(text);
+                      quantity = int.parse(text);
                     },
                     decoration: InputDecoration(
                       hintText: 'Quantity',
@@ -96,7 +97,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
               ),
               // ignore: deprecated_member_use
               Container(
-                width: screenWidth /7,
+                width: screenWidth / 7,
                 // ignore: deprecated_member_use
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
@@ -114,13 +115,15 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                       dropdownSelecoton();
                     }),
               ),
-              Text(
-                
-                'Total amount for $quantity x $type : $output',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Total amount for $quantity x $type : $output',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
@@ -141,9 +144,10 @@ class _ContainerDetailsState extends State<ContainerDetails> {
   }
 
   void dropdownSelecoton() {
-    doc = 3000;
-    others = 4000;
+    
     if (c == 1) {
+      doc = 3000;
+      others = 4000;
       ser = 300;
       cln = 300;
       thc = 557;
@@ -155,10 +159,12 @@ class _ContainerDetailsState extends State<ContainerDetails> {
       });
     }
     if (c == 2) {
+      doc = 3000;
+      others = 4000;
       ser = 500;
       cln = 600;
       thc = 2052;
-      cmc = 1157;
+      cmc = 1253;
       total = (ser + cln + thc + cmc + others) * quantity;
       total = total + doc;
 
