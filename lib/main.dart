@@ -31,6 +31,7 @@ class _TextFieldsState extends State<TextFields> {
         ),
       ),
       body: ContainerDetails(),
+      
     );
   }
 }
