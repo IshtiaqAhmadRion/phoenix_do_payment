@@ -72,8 +72,9 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                   child: TextFormField(
                     keyboardType: TextInputType.numberWithOptions(),
                     validator: (value) {
-                      
-                      if (value == null || value.isEmpty || int.parse(value)  == 0) {
+                      if (value == null ||
+                          value.isEmpty ||
+                          int.parse(value) == 0) {
                         return 'Please Enter Quantity';
                       } else {
                         return null;
@@ -96,25 +97,75 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                 width: 20,
               ),
               // ignore: deprecated_member_use
-              Container(
-                width: screenWidth / 7,
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    padding:
-                        EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-                    child: Text(
-                      "Submit",
-                      style: (TextStyle(fontSize: 20.00)),
+
+              //Button Column start
+
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: Column(
+                  children: [
+                    Container(
+                      width: screenWidth / 7,
+                      // ignore: deprecated_member_use
+                      child:
+
+                          // ignore: deprecated_member_use
+                          RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 10.0),
+                              child: Text(
+                                "Submit",
+                                style: (TextStyle(
+                                    fontSize: 20.00,
+                                    fontWeight: FontWeight.bold)),
+                              ),
+                              color: Colors.green[600],
+                              textColor: Colors.black,
+                              onPressed: () {
+                                quantityKey.currentState.validate();
+                                dropdownSelecoton();
+                              }),
                     ),
-                    color: Colors.green[600],
-                    textColor: Colors.black,
-                    onPressed: () {
-                      quantityKey.currentState.validate();
-                      dropdownSelecoton();
-                    }),
+                    Container(
+                      width: screenWidth / 7,
+                      // ignore: deprecated_member_use
+                      child:
+
+                          // ignore: deprecated_member_use
+                          Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        // ignore: deprecated_member_use
+                        child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 20.0, horizontal: 10.0),
+                            child: Text(
+                              "Witout outher Charges",
+                              textAlign: TextAlign.center,
+                              style: (TextStyle(
+                                  fontSize: 20.00,
+                                  fontWeight: FontWeight.bold)),
+                            ),
+                            color: Colors.green[600],
+                            textColor: Colors.black,
+                            onPressed: () {
+                              quantityKey.currentState.validate();
+                              total = total - others;
+
+                              setState(() {
+                                output = total.toString();
+                              });
+                            }),
+                      ),
+                    ),
+                  ],
+                ),
               ),
+              //Button Column end
+
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
@@ -144,7 +195,6 @@ class _ContainerDetailsState extends State<ContainerDetails> {
   }
 
   void dropdownSelecoton() {
-    
     if (c == 1) {
       doc = 3000;
       others = 4000;
