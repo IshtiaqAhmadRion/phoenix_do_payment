@@ -143,10 +143,11 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                             padding: EdgeInsets.symmetric(
                                 vertical: 20.0, horizontal: 10.0),
                             child: Text(
-                              "Witout outher Charges",
+                              "Witout other Charges",
                               textAlign: TextAlign.center,
+                             
                               style: (TextStyle(
-                                  fontSize: 20.00,
+                                  fontSize: 20.00,color: Colors.white,
                                   fontWeight: FontWeight.bold)),
                             ),
                             color: Colors.green[600],
