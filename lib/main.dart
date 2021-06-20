@@ -31,11 +31,14 @@ class _TextFieldsState extends State<TextFields> {
           "DO Collection Cost"
         ),
       ),
-      body: Column(
-        children: [
-          ContainerDetails(),
-          Detaintion()
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            ContainerDetails(),
+            Detaintion()
+          ],
+        ),
       ),
       
     );
