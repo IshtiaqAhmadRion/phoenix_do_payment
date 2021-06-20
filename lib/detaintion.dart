@@ -11,14 +11,21 @@ class _DetaintionState extends State<Detaintion> {
     return Padding(
       padding: const EdgeInsets.all(40.0),
       child: Container(
-        height: MediaQuery.of(context).size.height / 2,
+        color: Colors.red.shade900,
+        height: 50,
+        //height: MediaQuery.of(context).size.height / 2,
         child: Scaffold(body:
-        Column(
-          children: [
-            Text("Detaintio charge ",
-
-            textAlign: TextAlign.center,),
-          ],
+        Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Text("Detaintio charge ",
+          
+                textAlign: TextAlign.center,),
+              ],
+            ),
+          ),
         )),
       ),
     );
