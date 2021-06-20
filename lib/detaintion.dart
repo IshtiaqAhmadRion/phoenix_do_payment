@@ -16,15 +16,12 @@ class _DetaintionState extends State<Detaintion> {
         //height: MediaQuery.of(context).size.height / 2,
         child: Scaffold(body:
         Center(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Text("Detaintio charge ",
+          child: Column(
+            children: [
+              Text("Detaintio charge ",
           
-                textAlign: TextAlign.center,),
-              ],
-            ),
+              textAlign: TextAlign.center,),
+            ],
           ),
         )),
       ),
