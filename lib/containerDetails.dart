@@ -73,7 +73,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                   //Quantity
                   Container(
                     // padding: EdgeInsets.only(left: 10, right: 10),
-                    width: screenWidth / 7,
+                    width: screenWidth / 6,
                     child: Form(
                       key: quantityKey,
                       child: TextFormField(
@@ -82,7 +82,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
                           if (value == null ||
                               value.isEmpty ||
                               int.parse(value) == 0) {
-                            return 'Please Enter Quantity';
+                            return 'Enter Quantity';
                           } else {
                             return null;
                           }
@@ -231,6 +231,11 @@ class _ContainerDetailsState extends State<ContainerDetails> {
       setState(() {
         output = total.toString();
       });
+
+      
+
+
+
     }
   }
 }
